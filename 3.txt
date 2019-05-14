@@ -1,0 +1,166 @@
+3.
+#define Do 440
+const byte audio11 = 5;
+int dotLen = 150;
+int dashLen = 700;
+char incomingByte = 0;  
+
+void setup() {
+    Serial.begin(9600);
+}
+void loop() {
+    if (Serial.available() > 0) {
+        // 讀取進來的 byte
+        incomingByte = Serial.read();
+        // 印出收到的資料
+        Serial.println(incomingByte);
+        GetChar(incomingByte);
+        delay(800);
+    }
+}
+void MorseDot() {
+    tone(audio11, Do, dotLen); // start playing a tone
+    delay(500); // hold in this position
+}
+void MorseDash() {
+    tone(audio11, Do, dashLen); // start playing a tone
+    delay(800); // hold in this position
+}
+void GetChar(char tmpChar) {
+    switch (tmpChar) {
+        case 'A':
+            MorseDot();
+            MorseDash();
+            break;
+        case 'B':
+            MorseDash();
+            MorseDot();
+            MorseDot();
+            MorseDot();
+            break;
+        case 'C':
+            MorseDash();
+            MorseDot();
+            MorseDash();
+            MorseDot();
+            break;
+        case 'D':
+            MorseDash();
+            MorseDash();
+            MorseDot();
+            break;
+        case 'E':
+            MorseDot();
+            break;
+        case 'F':
+            MorseDot();
+            MorseDot();
+            MorseDash();
+            MorseDot();
+            break;
+        case 'G':
+            MorseDash();
+            MorseDash();
+            MorseDot();
+            break;
+        case 'H':
+            MorseDot();
+            MorseDot();
+            MorseDot();
+            MorseDot();
+            break;
+        case 'I':
+            MorseDot();
+            MorseDot();
+            break;
+        case 'J':
+            MorseDot();
+            MorseDash();
+            MorseDash();
+            MorseDash();
+            break;
+        case 'K':
+            MorseDash();
+            MorseDot();
+            MorseDash();
+            break;
+        case 'L':
+            MorseDot();
+            MorseDash();
+            MorseDot();
+            MorseDot();
+            break;
+        case 'M':
+            MorseDash();
+            MorseDash();
+            break;
+        case 'N':
+            MorseDash();
+            MorseDot();
+            break;
+        case 'O':
+            MorseDash();
+            MorseDash();
+            MorseDash();
+            break;
+        case 'P':
+            MorseDot();
+            MorseDash();
+            MorseDash();
+            MorseDot();
+            break;
+        case 'Q':
+            MorseDash();
+            MorseDash();
+            MorseDot();
+            MorseDash();
+            break;
+        case 'R':
+            MorseDot();
+            MorseDash();
+            MorseDot();
+            break;
+        case 'S':
+            MorseDot();
+            MorseDot();
+            MorseDot();
+            break;
+        case 'T':
+            MorseDash();
+            break;
+        case 'U':
+            MorseDot();
+            MorseDot();
+            MorseDash();
+            break;
+        case 'V':
+            MorseDot();
+            MorseDot();
+            MorseDot();
+            MorseDash();
+            break;
+        case 'W':
+            MorseDot();
+            MorseDash();
+            MorseDash();
+            break;
+        case 'X':
+            MorseDash();
+            MorseDot();
+            MorseDot();
+            MorseDash();
+            break;
+        case 'Y':
+            MorseDash();
+            MorseDot();
+            MorseDash();
+            MorseDash();
+            break;
+        case 'Z':
+            MorseDash();
+            MorseDash();
+            MorseDot();
+            MorseDot();
+            break;
+    }
+}
